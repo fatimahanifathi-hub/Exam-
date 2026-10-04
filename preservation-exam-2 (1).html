@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>امتحان السكشن التاني – أسس حفظ الأغذية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;700&family=Marhey:wght@600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F6F2F8;--ink:#2C2440;--soft:#6B6180;--card:#FFFFFF;--line:#E4DCEC;--plum:#2F2850;--mauve:#7A56A0;--mauveBg:#EFE6F8;--pink:#B84F7C;--pinkBg:#FCE8F0;--teal:#23776F;--tealBg:#E1F4F1;--gold:#F2CD6B;--shadow:0 2px 0 rgba(47,40,80,.08)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1C1828;--ink:#EEE8F6;--soft:#B3A9C6;--card:#272236;--line:#3A3350;--plum:#141120;--mauve:#C3A3E6;--mauveBg:#3A2E52;--pink:#F08FB5;--pinkBg:#4A2638;--teal:#6FD3C6;--tealBg:#1E3E3A;--shadow:none}}
+:root[data-theme="dark"]{--bg:#1C1828;--ink:#EEE8F6;--soft:#B3A9C6;--card:#272236;--line:#3A3350;--plum:#141120;--mauve:#C3A3E6;--mauveBg:#3A2E52;--pink:#F08FB5;--pinkBg:#4A2638;--teal:#6FD3C6;--tealBg:#1E3E3A;--shadow:none}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Readex Pro',system-ui,sans-serif;font-size:16px;line-height:1.7}
+header{background:var(--plum);color:#fff;padding:22px 18px 18px;text-align:center;border-bottom:4px solid #C9A24A}
+header h1{font-family:'Marhey',sans-serif;font-size:clamp(22px,5vw,32px);margin:0;line-height:1.3}
+header p{margin:4px 0 0;color:#E3D9F2;font-size:14px}
+.name{font-family:'Dancing Script',cursive;font-size:34px;color:var(--gold);margin-top:6px;direction:ltr;text-shadow:0 2px 2px rgba(0,0,0,.4)}
+main{max-width:820px;margin:0 auto;padding:16px 14px 120px}
+.intro{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-bottom:14px;font-size:15px;color:var(--soft)}
+.sec{font-family:'Marhey',sans-serif;font-size:21px;color:var(--mauve);margin:26px 4px 10px;padding-bottom:4px;border-bottom:2px dashed var(--line)}
+.q{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-bottom:12px;box-shadow:var(--shadow)}
+.q.right{border-color:var(--teal);border-width:2px}
+.q.wrong{border-color:var(--pink);border-width:2px}
+.qh{display:flex;gap:10px;align-items:flex-start;font-weight:500;margin-bottom:10px}
+.qn{flex-shrink:0;min-width:30px;height:30px;border-radius:50%;background:var(--mauveBg);color:var(--mauve);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{display:flex;align-items:center;gap:10px;width:100%;text-align:right;background:transparent;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;font:inherit;color:inherit;cursor:pointer;line-height:1.5}
+.opt:hover{border-color:var(--mauve)}
+.opt:focus-visible{outline:3px solid var(--mauve);outline-offset:2px}
+.radio{flex-shrink:0;width:20px;height:20px;border-radius:50%;border:2px solid var(--soft);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.opt.sel{background:var(--mauveBg);border-color:var(--mauve);border-width:2px;font-weight:500}
+.opt.sel .radio{border-color:var(--mauve);background:var(--mauve)}
+.opt.sel .radio::after{content:"";width:8px;height:8px;border-radius:50%;background:#fff}
+.graded .opt{cursor:default}
+.opt.ok{background:var(--tealBg);border-color:var(--teal);border-width:2px}
+.opt.ok .radio{background:var(--teal);border-color:var(--teal);color:#fff}
+.opt.ok .radio::after{content:"✓";width:auto;height:auto;background:none;color:#fff}
+.opt.bad{background:var(--pinkBg);border-color:var(--pink);border-width:2px}
+.opt.bad .radio{background:var(--pink);border-color:var(--pink)}
+.opt.bad .radio::after{content:"✗";width:auto;height:auto;background:none;color:#fff;border-radius:0}
+.res{margin-top:10px;border-radius:12px;padding:10px 12px;font-size:15px;background:var(--bg)}
+.badge{display:inline-block;font-weight:700;padding:1px 10px;border-radius:20px;margin-left:6px;font-size:14px;color:#fff}
+.b-ok{background:var(--teal)}.b-bad{background:var(--pink)}.b-skip{background:var(--soft)}
+.lbl{font-weight:700}
+textarea{width:100%;min-height:130px;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;font:inherit;color:inherit;background:var(--bg);resize:vertical}
+textarea:focus-visible{outline:3px solid var(--mauve);outline-offset:1px}
+.bar{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:12px;justify-content:center;z-index:5}
+.prog{flex:1;max-width:420px}
+.track{height:8px;border-radius:8px;background:var(--line);overflow:hidden}
+.fill{height:100%;background:linear-gradient(90deg,var(--mauve),var(--pink));width:0;transition:width .25s}
+.ptxt{font-size:13px;color:var(--soft);margin-top:2px}
+.btn{font:inherit;font-weight:700;border:0;border-radius:12px;padding:11px 20px;cursor:pointer;background:var(--plum);color:#fff;white-space:nowrap}
+.btn:focus-visible{outline:3px solid var(--mauve);outline-offset:2px}
+.btn.alt{background:var(--mauveBg);color:var(--mauve)}
+.btn:disabled{opacity:.6;cursor:wait}
+#summary{display:none;background:var(--card);border:2px solid var(--mauve);border-radius:18px;padding:18px;margin-bottom:16px;text-align:center}
+.big{font-family:'Marhey',sans-serif;font-size:44px;color:var(--mauve);line-height:1.2}
+.row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.stat{background:var(--bg);border-radius:12px;padding:8px 14px;font-size:15px}
+.fb{margin-top:10px;font-size:15px}
+.fb div{margin-top:6px}
+.key{margin-top:8px;background:var(--mauveBg);border-radius:10px;padding:8px 12px;font-size:14.5px}
+.hide{display:none!important}
+@media (prefers-reduced-motion:reduce){.fill{transition:none}}
+</style>
+</head>
+<body>
+<header>
+<h1>امتحان السكشن التاني</h1>
+<p>أسس حفظ الأغذية · تجهيز وإعداد الخضار والفاكهة</p>
+<div class="name">Fatma Hany</div>
+</header>
+<main>
+<div id="summary"></div>
+<div class="intro">40 سؤال اختيار من متعدد و10 أسئلة مقالي على السكشن كله. اختار إجابتك وتقدر تغيّرها لحد ما تدوس "صحّح الامتحان". إجاباتك بتتحفظ تلقائي، فلو خرجت ورجعت هتلاقيها زي ما هي. المقالي بيتصحح على المعنى، ومش لازم تكتب إجابة نموذجية.</div>
+<div id="quiz"></div>
+</main>
+<div class="bar">
+<div class="prog"><div class="track"><div class="fill" id="fill"></div></div><div class="ptxt" id="ptxt"></div></div>
+<button class="btn" id="grade">صحّح الامتحان</button>
+<button class="btn alt hide" id="onlyWrong">اعرض الغلط بس</button>
+<button class="btn alt hide" id="reset">امتحان جديد</button>
+</div>
+<script>
+const MCQ = [
+{s:"الاستلام والفرز",q:"الخضار والفاكهة قبل التصنيع بتدخل الصناعة إزاي؟",o:["كمادة خام زي ما هي من المزرعة","لازم تتجهز وتتعد الأول","بتتعقم بس وتدخل على طول","بتتجمد الأول في كل الحالات"],a:1,e:"الإجابة الصحيحة إنها لازم تتجهز وتتعد الأول. الخامة مينفعش تدخل من المزرعة للصناعة زي ما هي، لازم تعدي على خطوات إعداد قبل أي طريقة حفظ."},
+{q:"شحنة خضار وصلت المصنع… أول خطوة بتتعمل عليها؟",o:["الفرز","الغسيل","استلام أو انتخاب الأصناف","التدريج"],a:2,e:"الإجابة الصحيحة استلام أو انتخاب الأصناف. دي أول خطوة، وبعدها بييجي الفرز. خلي بالك إن ده سؤال بيتلخبط فيه كتير."},
+{q:"مصنع بيصنع عصير برتقال… يختار أنهي صنف؟",o:["أبو سرة (الشتوي)","الصيفي / البلدي / السكري","أي صنف، مفيش فرق","خليط من الاتنين بالنص"],a:1,e:"الإجابة الصحيحة البرتقال الصيفي. كمية العصارة فيه كبيرة، وده المنتج اللي المصنع هيبيعه. لو اختار أبو سرة هيطلع عصير قليل وهالك كبير."},
+{q:"مصنع فواكه مجففة يفضّل برتقال أبو سرة… ليه؟",o:["لأن عصارته كتير","لأن نسبة المية فيه قليلة ونسبة المادة الصلبة عالية","لأنه أرخص في السعر","لأن لونه أحلى"],a:1,e:"الإجابة الصحيحة إن المية فيه قليلة والمادة الصلبة عالية. التجفيف هدفه إزالة المية، فالصنف اللي ميته أقل يبقى أنسب. والمبدأ العام: الصنف بيتختار على حسب الصناعة."},
+{q:"الهدف الأساسي من عملية الفرز Sorting:",o:["توحيد المعاملة الحرارية","استبعاد أي مواد غير مرغوبة","زيادة مساحة السطح","تثبيط الإنزيمات المؤكسدة"],a:1,e:"الإجابة الصحيحة استبعاد أي مواد غير مرغوبة: الفاسد، والمصاب حشريًا، والمصاب ميكانيكيًا، وغير تام النضج أو التلوين. توحيد المعاملة الحرارية ده هدف التدريج."},
+{q:"الفرز بيتم في المصنع إزاي؟",o:["بالغرابيل المثقوبة","الثمار تمشي على سير متحرك وعمال على اليمين والشمال يشيلوا المخالف","بمحلول ملحي 3%","باسطوانات بتلف عكس بعض"],a:1,e:"الإجابة الصحيحة السير المتحرك والعمال على الجانبين. الغرابيل دي طريقة تدريج، والمحلول الملحي للتدريج الوصفي، والاسطوانات للتقشير بالاحتكاك."},
+{q:"أنهي واحدة من دول مش بتتشال في الفرز؟",o:["ثمار مصابة ميكانيكيًا","ثمار غير تامة النضج","ثمار سليمة وناضجة حجمها أكبر شوية من غيرها","ثمار مصابة حشريًا"],a:2,e:"الإجابة الصحيحة الثمار السليمة الناضجة. اختلاف الحجم بيتعالج في التدريج مش الفرز. الفرز بيشيل الفاسد والمصاب واللي ما اكتملش."},
+{q:"أنهي مجموعة كلها عمليات أساسية؟",o:["الفرز والغسيل","التدريج والتقشير","التقطيع والتدريج","التقشير والتقطيع"],a:0,e:"الإجابة الصحيحة الفرز والغسيل، لأنهم بيتعملوا على جميع الثمار. التدريج والتقشير والتقطيع عمليات ثانوية لأن مش كل الثمار محتاجاها."},
+{s:"التدريج Grading",q:"برتقال داخل مصنع عصير… محتاج تدريج؟",o:["آه، عشان يتعصر بنفس الوقت","لأ، لأنه هيتعصر والمستهلك مش هيشوف حجمه","آه، تدريج وصفي","آه، عشان السلق"],a:1,e:"الإجابة الصحيحة لأ. ده المثال اللي بيثبت إن التدريج عملية ثانوية، لأن البرتقال هيتعصر وحجمه مش فارق مع المستهلك."},
+{q:"أنواع التدريج:",o:["يدوي وبالغرابيل","حجمي ووصفي","سريع وبطيء","بالبخار وبالمية"],a:1,e:"الإجابة الصحيحة حجمي ووصفي. خلي بالك من الفرق: يدوي وبالغرابيل دي طرق التدريج، مش أنواعه."},
+{q:"أهداف التدريج الحجمي (أشهر أمثلته البطاطس والبامية):",o:["إزالة الأتربة وخفض الحمل الميكروبي","توحيد المعاملة الحرارية ورفع القيمة الاقتصادية","تثبيط الإنزيمات ومنع التلون البني","منع الجفاف السطحي"],a:1,e:"الإجابة الصحيحة توحيد المعاملة الحرارية ورفع القيمة الاقتصادية. الحجم الصغير والكبير مياخدوش نفس وقت السلق، ومش هتقدر تفصلهم أثناء السلق، فلازم تدرّج من البداية."},
+{q:"علبة برنجلز سعرها تقريبًا 10 أضعاف كيس الشيبسي العادي مع إن الاتنين بطاطس. السبب حسب السكشن:",o:["إن البطاطس مستوردة","التدريج الحجمي اللي خلّى الشكل متناسق بحجم واحد ورصة واحدة","إن فيه توابل أغلى","إنها مش مقلية"],a:1,e:"الإجابة الصحيحة التدريج الحجمي. الحجم الواحد والرصة المتناسقة خلّوا الشكل جذاب، وده رفع القيمة الاقتصادية للمنتج."},
+{q:"تركيز المحلول الملحي في التدريج الوصفي للبسلة، وأساس الفصل:",o:["3% — على أساس الكثافة","3% — على أساس الحجم","5–20% — على أساس الكثافة","10% — على أساس اللون"],a:0,e:"الإجابة الصحيحة 3% على أساس الكثافة. ومتلخبطش بين 3% دي و5–20% اللي هي تركيز الـ NaOH في التقشير القلوي."},
+{q:"في المحلول الملحي، البسلة اللي بتطفو على الوش هي:",o:["النشوية لأن كثافتها أعلى","السكرية لأن كثافتها أقل","النشوية لأن كثافتها أقل","السكرية لأن كثافتها أعلى"],a:1,e:"الإجابة الصحيحة السكرية لأن كثافتها أقل. بتتسحب بمصافي وتكمل سلق أو تجميد. النشوية بترسب، وبتروح أعلاف أو تتجفف وتتطحن."},
+{q:"في التدريج بالغرابيل، ترتيب الثقوب على السير:",o:["كبيرة الأول وبعدين أصغر فأصغر","صغيرة الأول وبعدين أكبر فأكبر","كلها نفس الحجم","عشوائي"],a:1,e:"الإجابة الصحيحة الصغيرة الأول وبعدين أكبر فأكبر. الثمار الصغيرة تقع الأول في الباسكت، والباقي يكمل على السير لحد أكبر حجم."},
+{s:"الغسيل Washing",q:"أنهي واحدة مش من أهداف الغسيل؟",o:["إزالة الأتربة والشوائب","التخلص من آثار متبقيات المبيدات","خفض الحمل الميكروبي","تثبيط الإنزيمات المؤكسدة"],a:3,e:"الإجابة الصحيحة تثبيط الإنزيمات المؤكسدة، لأن ده هدف السلق. أهداف الغسيل التلاتة هي الباقيين، وخلي بالك إن الصياغة الصح \"آثار متبقيات المبيدات\"."},
+{q:"البطاطس بتتغسل بالفرش ليه؟",o:["عشان قشرتها رقيقة","لأنها ثمار جذرية بتنمو تحت التربة ولازق عليها كتل طين","عشان تتقشر في نفس الوقت","عشان لونها"],a:1,e:"الإجابة الصحيحة إنها ثمار جذرية عليها كتل طين. ده مش تراب خفيف، فمش هيطلع غير بالفرش."},
+{q:"الفراولة والتوت والمشمش بيتغسلوا بأنهي طريقة؟",o:["الفرش","الرشاشات: سير بيهتز ودش مية خفيف","الغسالات بالفرش","التقشير بالاحتكاك"],a:1,e:"الإجابة الصحيحة الرشاشات. دي ثمار رهيفة، والسير بيهتز عشان يقلّبها والدش الخفيف يوصل لكل جوانبها."},
+{q:"الغسيل بالغسالات (حلة مثقبة بتلف يمين وشمال) ينفع للبطاطس بشرط:",o:["تكون المية سخنة","تكون جدران الغسالة فيها فرش","البطاطس تكون مقشرة","البطاطس تكون صغيرة"],a:1,e:"الإجابة الصحيحة إن جدرانها يبقى فيها فرش. من غير فرش الغسالات بتنفع للثمار الصلبة زي الجزر والكوسة والخيار والتفاح."},
+{s:"التقشير Peeling",q:"أنهي منتج من دول مش بيتقشر؟",o:["طماطم داخلة مصنع صلصة","بطاطس داخلة مصنع شيبسي","عنب هيتعمل زبيب","بطاطس نصف مقلية"],a:2,e:"الإجابة الصحيحة العنب للزبيب. التقشير عملية ثانوية، والفراولة والتوت والمشمش كمان مش بيتقشروا."},
+{q:"الخوخ بيتقشر لو هيتعمل:",o:["مجفف","عصير","كومبوت","مربى في كل الحالات"],a:2,e:"الإجابة الصحيحة الكومبوت. لو هيتجفف ما بيتقشرش، ولو هيتعمل عصير بيتعصر كله وبعدين يتصفى."},
+{q:"التقشير بالبخار أو المية الساخنة (95–100 °م) بيشيل القشرة إزاي؟",o:["بالاحتكاك","الحرارة بتفكك الروابط بين القشرة والنسيج اللحمي فالقشرة تسيب","بيدوّب القشرة كيميائيًا","بالفرش"],a:1,e:"الإجابة الصحيحة إن الحرارة بتفكك الروابط بين القشرة والنسيج اللحمي، فالقشرة تسيب وتتمسح على السير. أشهر مثال الطماطم، والخوخ كمان."},
+{q:"في التقشير القلوي، المادة المضافة وتركيزها:",o:["NaCl بتركيز 3%","NaOH بتركيز 5–20% حسب صلابة الثمرة وحجمها","H₂O₂ بتركيز 1%","Carborundum بتركيز 10%"],a:1,e:"الإجابة الصحيحة NaOH بتركيز 5–20%. فايدته إنه بيسرّع تفكك الروابط، فبدل 5–7 دقايق بخار التقشير بياخد دقيقتين أو تلاتة."},
+{q:"التقشير بالاحتكاك Abrasive Peeling بيتم بمادة اسمها:",o:["NaOH","Carborundum","Catalase","Oxidase"],a:1,e:"الإجابة الصحيحة Carborundum. سطحها خشن زي ورق الصنفرة، ومغلّف بيها اسطوانتين بيلفوا عكس بعض. ميزته إنه بيشيل القشرة بس من غير هالك."},
+{q:"أنهي من دول ما بيتقشرش بالاحتكاك؟",o:["البطاطس","الجزر","البطاطا","البصل والتوم"],a:3,e:"الإجابة الصحيحة البصل والتوم. البطاطس أشهر حاجة بتتقشر بالاحتكاك، والجزر والبطاطا كمان ينفعوا."},
+{q:"ليه البخار أفضل من المية المغلية في تقشير الطماطم؟",o:["لأنه أرخص","لأن المية المغلية بتنزّل اللون وبتكسر الفيتامينات خصوصًا فيتامين C، والبخار بيحافظ عليهم","لأن المية مش بتشيل القشرة","لأن البخار بيعقم أكتر"],a:1,e:"الإجابة الصحيحة إن البخار بيحافظ على اللون والفيتامينات. وحتى لو نسبة الفيتامين قليلة لازم نحافظ عليها، لأن المنتج ماشي على وصفة بنسب محددة، ولو ضاعت هتضطر تضيفها على حسابك."},
+{q:"فيتامين C حساس لإيه؟",o:["الحرارة بس","الضوء بس","الضوء والحرارة والمعادن والإشعاع والأكسجين","مش حساس لأي حاجة"],a:2,e:"الإجابة الصحيحة كلهم: الضوء والحرارة والمعادن والإشعاع والأكسجين. عشان كده بيضيع بسهولة في المية المغلية."},
+{s:"التقطيع Cutting",q:"هدفين التقطيع:",o:["إزالة الأتربة وخفض الميكروبات","زيادة مساحة السطح المعرضة للمعاملة، وتصغير حجم الجزيئات لتقليل وقت التجفيف","تثبيط الإنزيمات ومنع التلون","توحيد الحجم ورفع السعر"],a:1,e:"الإجابة الصحيحة زيادة مساحة السطح وتصغير حجم الجزيئات. ده بيقلل وقت التجفيف وبيمنع ظاهرة الجفاف السطحي."},
+{q:"ظاهرة الجفاف السطحي Case Hardening معناها:",o:["الثمرة تنشف بالتساوي من برّه وجوه","السطح ينشف ويتقفل قبل ما الحرارة توصل للنص، فالرطوبة تتحبس جوه والثمرة تبوظ","الثمرة تتجمد من برّه","القشرة تتشال بالحرارة"],a:1,e:"الإجابة الصحيحة إن السطح بينشف والمسام بتتقفل، فالثمرة تبقى من برّه ناشفة ومن جوه رطبة، وده بيخليها تتعفن. بتحصل في الثمار الكبيرة اللي بتتجفف من غير تقطيع."},
+{q:"الترتيب الصح في مصنع تجفيف:",o:["تقطيع ← تقشير ← تجفيف","تقشير ← تقطيع ← تجفيف","تجفيف ← تقطيع ← تقشير","تقطيع ← تجفيف ← تقشير"],a:1,e:"الإجابة الصحيحة تقشير ثم تقطيع ثم تجفيف."},
+{s:"خطوط الإنتاج",q:"الترتيب الصح لخطوات البطاطس نصف المقلية:",o:["استلام ← تقطيع ← تقشير ← تجميد ← سلق ← تعبئة","استلام ← تقشير بالاحتكاك ← تقطيع صوابع ← نص سلقة ← تجميد سريع ← تعبئة","استلام ← تقشير ← قلي ← توابل ← تعبئة","استلام ← سلق ← تقشير ← تقطيع ← تعبئة"],a:1,e:"الإجابة الصحيحة الاختيار التاني. التجميد السريع بيكون من -30 لـ -40 °م في 5–10 دقايق على سير، كل صباع لوحده عشان الصوابع ما تلزقش في بعض."},
+{q:"الفرق الأساسي بين خط الشيبسي وخط البطاطس نصف المقلية:",o:["الشيبسي مش بيتقشر","الشيبسي ما بيتسلقش، بيتقلي في زيت مغلي على طول","الشيبسي بيتجمد","الشيبسي ما بيتقطعش"],a:1,e:"الإجابة الصحيحة إن الشيبسي ما بيتسلقش. بيتقلي، وبعدين يتصفى، ويدخل درام فيه ملح وتوابل، وبعدين يتعبى. وده بيوضح إن كل منتج ليه مخطط تصنيع خاص بيه."},
+{s:"السلق Blanching",q:"أشهر 3 إنزيمات مؤكسدة في الخضار:",o:["أكسيديز، بيروكسيديز، كاتاليز","فوسفاتيز، ليبيز، أميليز","كاتاليز، فوسفاتيز، ليبيز","بروتييز، أميليز، أكسيديز"],a:0,e:"الإجابة الصحيحة أكسيديز وبيروكسيديز وكاتاليز. الفوسفاتيز مش منهم."},
+{q:"تفاحة اتقطعت واسودّت… السبب:",o:["الحديد اللي فيها","نشاط الإنزيمات المؤكسدة لما اتعرضت للأكسجين","الميكروبات","المية"],a:1,e:"الإجابة الصحيحة نشاط الإنزيمات المؤكسدة. وهي جوه الثمرة المقفولة مش بتبقى نشطة، لكن بعد التقطيع بتتعرض للأكسجين فيحصل التلون البني. ومالهاش علاقة بالحديد."},
+{q:"الهدف الأساسي للسلق:",o:["تطرية الأنسجة","إيقاف أو تثبيط نشاط الإنزيمات المؤكسدة","تقشير الثمرة","زيادة الوزن"],a:1,e:"الإجابة الصحيحة تثبيط الإنزيمات المؤكسدة، ويترتب عليه الحفاظ على اللون. باقي الأهداف: خفض الحمل الميكروبي، والتخلص من النشا الزائد والمواد الغروية، وتقليل حجم الخضروات الورقية."},
+{q:"لما تسلق بطاطس وتشيلها، المية بتبقى عكرة… ده دليل على أنهي هدف؟",o:["تثبيط الإنزيمات","التخلص من النشا الزائد","التخلص من المواد الغروية","خفض الحمل الميكروبي"],a:1,e:"الإجابة الصحيحة التخلص من النشا الزائد. أما المواد الغروية فمثالها القلقاس والبامية."},
+{q:"كيس ملوخية متجمد حجمه صغير مع إن الكمية كبيرة… ده بسبب أنهي هدف من أهداف السلق؟",o:["التخلص من النشا الزائد","تقليل حجم الخضروات الورقية، وده بيوفر مكان في التجميد","تثبيط الإنزيمات","خفض الحمل الميكروبي"],a:1,e:"الإجابة الصحيحة تقليل حجم الخضروات الورقية. السلق مع التقطيع بيقللوا حجمها، فبتاخد مساحة أقل في التجميد."},
+{q:"بامية مسلوقة ومتجمدة طلعت من الفريزر… تتاكل على طول؟",o:["آه لأنها اتسلقت","لأ، لازم تتطبخ لأن السلق مش عملية طهي","آه لو اتسخنت","حسب حجمها"],a:1,e:"الإجابة الصحيحة لأ، لأن السلق مش طهي. ولو الأنسجة طريت بعد السلق، يبقى اللي حصل ده مش سلق."},
+{q:"الفرق بين التقشير والسلق بالمية الساخنة:",o:["درجة الحرارة","الزمن والهدف: التقشير 2–5 دقايق لتفكيك الروابط، والسلق 7–10 (وأحيانًا 15) لتثبيط الإنزيمات","نوع المية","مفيش فرق"],a:1,e:"الإجابة الصحيحة الزمن والهدف. درجة الحرارة واحدة تقريبًا في الاتنين، من 95 لـ 100 °م."},
+{q:"عملت اختبار الكاتاليز (عينة + H₂O₂ + مية مقطرة) وطلعت فقاقيع… المعنى:",o:["السلق كفء والإنزيم اتثبط","الإنزيم لسه موجود وكسّر H₂O₂ لمية وأكسجين، يبقى السلق ماكملش","العينة فاسدة","المية المقطرة ملوثة"],a:1,e:"الإجابة الصحيحة إن الإنزيم لسه موجود، فلازم تسلق تاني وتعيد الاختبار. لو مطلعتش فقاقيع يبقى السلق كفء."},
+];
+const ESSAY = [
+{q:"قارن بين برتقال أبو سرة والبرتقال الصيفي، ووضّح أنهي صنف يختاره مصنع العصير وأنهي يختاره مصنع الفواكه المجففة، وليه.",k:"أبو سرة: ألياف أكتر وعصير أقل ومية قليلة ومادة صلبة عالية، مناسب للفواكه المجففة. الصيفي/البلدي/السكري: عصارة كبيرة، مناسب لمصنع العصير. لو مصنع العصير أخد أبو سرة: عصير قليل وهالك كبير. انتخاب الأصناف بيكون على أساس اللي يناسب الصناعة."},
+{q:"اذكر الهدف من الفرز، وإيه اللي بيتستبعد فيه، وبيتم إزاي، وليه هو عملية أساسية.",k:"الهدف استبعاد أي مواد غير مرغوبة. بيتستبعد: الفاسد، المصاب حشريًا، المصاب ميكانيكيًا، غير تام التلوين أو النضج، والثمار الضامرة الصغيرة. بيتم على سير متحرك وعمال يمين وشمال يشيلوا المخالف. أساسية لأنها بتتعمل على جميع الثمار."},
+{q:"اذكر أهداف التدريج الحجمي مع مثال لكل هدف، ووضّح ليه التدريج عملية ثانوية.",k:"أشهر أمثلته البطاطس والبامية. توحيد المعاملة الحرارية: الصغير والكبير مش بياخدوا نفس وقت السلق ومش هنقدر نفصلهم وقت السلق. رفع القيمة الاقتصادية: مثال برنجلز حوالي 10 أضعاف الشيبسي بسبب الحجم الواحد. ثانوي لأنه مش بيتعمل على كل الثمار، زي برتقال هيتعصر."},
+{q:"اشرح التدريج الوصفي للبسلة بالخطوات، ومصير كل نوع.",k:"نوعين: سكرية (المستهلك بيفضلها، أول الموسم) ونشوية. بعد فصل القشرة عن البذور تتحط في محلول ملحي 3%. الفصل على أساس الكثافة: السكرية تطفو والنشوية ترسب. السكرية تتسحب بمصافي وتكمل سلق أو تجميد. النشوية أعلاف حيوانات أو تتجفف وتتطحن."},
+{q:"اذكر أهداف الغسيل، وطرقه التلاتة مع الثمار المناسبة لكل طريقة.",k:"الأهداف: إزالة الأتربة والشوائب، التخلص من آثار متبقيات المبيدات، خفض الحمل الميكروبي. الفرش: للبطاطس (كتل طين). الرشاشات (سير بيهتز ودش خفيف): فراولة وتوت ومشمش وخوخ. الغسالات (حلة مثقبة بتلف يمين وشمال): جزر وكوسة وخيار وتفاح، والبطاطس لو جدرانها فيها فرش."},
+{q:"اذكر طرق التقشير الأربعة مع مثال وفكرة كل طريقة.",k:"السكاكين: يدوي مش مستخدم في المصانع. البخار أو المية الساخنة 95–100 °م: تفكيك الروابط بين القشرة والنسيج اللحمي، طماطم وخوخ. القلوي: NaOH بتركيز 5–20% حسب الصلابة والحجم، بيسرّع التقشير. الاحتكاك Abrasive Peeling: كاربورندم على اسطوانتين بيلفوا عكس بعض، بطاطس وجزر وبطاطا، مش البصل والتوم، ومن غير هالك."},
+{q:"ليه البخار أفضل من المية المغلية في تقشير الطماطم؟ وليه لازم نحافظ على الفيتامين حتى لو نسبته قليلة؟",k:"المية المغلية بتنزّل اللون وبتكسر الفيتامينات خصوصًا فيتامين C الحساس للضوء والحرارة والمعادن والإشعاع والأكسجين، والبخار بيحافظ على الألوان والفيتامينات. لازم نحافظ عليه لأن المنتج ماشي على وصفة بنسب محددة، ولو ضاع هنضطر نضيفه بفلوسنا."},
+{q:"اشرح ظاهرة الجفاف السطحي (Case Hardening) وإزاي التقطيع بيمنعها.",k:"التجفيف في الأفران بالحمل: السخانات تسخن الهواء والهواء يسخن السطح والسطح يوصل للي وراه. في الثمرة الكبيرة السطح ينشف (وممكن يتحرق) والمسام تتقفل قبل ما الحرارة توصل للنص، فالرطوبة تتحبس جوه والثمرة تتعفن. التقطيع بيزود مساحة السطح ويصغر الحجم، فالتجفيف ياخد وقت أقل من غير جفاف سطحي ونحافظ على القيمة الغذائية."},
+{q:"اذكر أهداف السلق، ووضّح هل السلق عملية طهي، وفرّق بينه وبين التقشير.",k:"الأهداف: تثبيط الإنزيمات المؤكسدة (أكسيديز، بيروكسيديز، كاتاليز) وده الأساسي، الحفاظ على اللون، خفض الحمل الميكروبي، التخلص من النشا الزائد، التخلص من المواد الغروية (قلقاس وبامية)، تقليل حجم الخضروات الورقية (ملوخية). مش طهي: المسلوق المتجمد لازم يتطبخ. الفرق: نفس الحرارة 95–100 °م، التقشير 2–5 دقايق لتفكيك الروابط، والسلق 7–10 وأحيانًا 15 دقيقة لتثبيط الإنزيمات."},
+{q:"إزاي تكشف على كفاءة عملية السلق؟ اشرح الاختبار والنتيجتين.",k:"اختبار الكاتاليز (مش الفوسفاتيز): أنبوبة + 1 جم عينة + 1 مل H₂O₂ + 1 مل مية مقطرة ثم رج. فقاقيع: الكاتاليز كسّر H₂O₂ لمية وأكسجين، يبقى السلق ماكملش، نسلق تاني ونعيد الاختبار. مفيش فقاقيع: الإنزيم اتثبط والسلق كفء."},
+];
+
+const KEY='s2quiz_short_v1';
+let st=null, sample=null;
+const $=s=>document.querySelector(s);
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+function load(){try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&s.order&&s.order.length===MCQ.length)return s}catch(e){}return null}
+function fresh(){return {order:MCQ.map(()=>shuffle([0,1,2,3])),picks:{},essays:{},graded:false,essayRes:null,essayMsg:''}}
+function render(){
+  let h='',n=0;
+  MCQ.forEach((x,i)=>{
+    if(x.s)h+=`<div class="sec">${esc(x.s)}</div>`;
+    n++;
+    h+=`<div class="q" id="q${i}"><div class="qh"><span class="qn">${n}</span><span>${esc(x.q)}</span></div><div class="opts">`;
+    st.order[i].forEach(oi=>{const sel=st.picks[i]===oi;h+=`<button class="opt${sel?' sel':''}" data-q="${i}" data-o="${oi}" aria-pressed="${sel}"><span class="radio"></span><span>${esc(x.o[oi])}</span></button>`});
+    h+=`</div><div class="res hide"></div></div>`;
+  });
+  h+=`<div class="sec">أسئلة مقالي</div>`;
+  ESSAY.forEach((x,i)=>{n++;h+=`<div class="q" id="e${i}"><div class="qh"><span class="qn">${n}</span><span>${esc(x.q)}</span></div><textarea data-e="${i}" placeholder="اكتب إجابتك هنا بأسلوبك..."></textarea><div class="res hide"></div></div>`});
+  $('#quiz').innerHTML=h;
+  document.querySelectorAll('textarea').forEach(t=>{t.value=st.essays[t.dataset.e]||'';t.oninput=()=>{st.essays[t.dataset.e]=t.value;save();prog()}});
+  document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
+    if(st.graded)return;
+    st.picks[+b.dataset.q]=+b.dataset.o;save();
+    b.parentNode.querySelectorAll('.opt').forEach(o=>{o.classList.toggle('sel',o===b);o.setAttribute('aria-pressed',o===b)});
+    prog();
+  });
+  $('#summary').style.display='none';
+  $('#quiz').classList.toggle('graded',st.graded);
+  $('#grade').classList.toggle('hide',st.graded);$('#grade').disabled=false;
+  $('#onlyWrong').classList.toggle('hide',!st.graded);$('#reset').classList.toggle('hide',!st.graded);
+  prog();
+  if(st.graded){showMcq();showEssays()}
+}
+function prog(){
+  const done=Object.keys(st.picks).length+Object.values(st.essays).filter(v=>v&&v.trim()).length;
+  const tot=MCQ.length+ESSAY.length;
+  $('#fill').style.width=(done/tot*100)+'%';
+  $('#ptxt').textContent=`جاوبت ${done} من ${tot}`;
+}
+function showMcq(){
+  let right=0;
+  MCQ.forEach((x,i)=>{
+    const card=$('#q'+i),p=st.picks[i],ok=p===x.a;if(ok)right++;
+    card.classList.add(ok?'right':'wrong');
+    card.querySelectorAll('.opt').forEach(o=>{const oi=+o.dataset.o;o.classList.remove('sel');if(oi===x.a)o.classList.add('ok');else if(oi===p)o.classList.add('bad')});
+    const r=card.querySelector('.res');r.classList.remove('hide');
+    r.innerHTML=(p===undefined?`<span class="badge b-skip">ما اتجاوبش</span>`:ok?`<span class="badge b-ok">صح ✓</span>`:`<span class="badge b-bad">غلط ✗</span>`)+
+      `<div><span class="lbl">إجابتك:</span> ${p===undefined?'—':esc(x.o[p])}</div>`+
+      `<div><span class="lbl">الإجابة الصحيحة:</span> ${esc(x.o[x.a])}</div>`+
+      `<div style="margin-top:4px"><span class="lbl">التوضيح:</span> ${esc(x.e)}</div>`;
+  });
+  const pct=Math.round(right/MCQ.length*100);
+  const S=$('#summary');S.style.display='block';
+  S.innerHTML=`<div class="big">${right} من ${MCQ.length}</div><div>درجة الاختيار من متعدد (${pct}%)</div><div class="row"><div class="stat">صح: ${right}</div><div class="stat">غلط أو متساب: ${MCQ.length-right}</div></div><div id="essaySum" class="fb"></div>`;
+}
+function showEssays(){
+  const es=$('#essaySum');let tot=0,cnt=0;
+  ESSAY.forEach((x,i)=>{
+    const card=$('#e'+i),r=card.querySelector('.res'),a=(st.essays[i]||'').trim();
+    card.querySelector('textarea').readOnly=true;r.classList.remove('hide');
+    if(!a){r.innerHTML=`<span class="badge b-skip">ما اتجاوبش</span><div class="key"><span class="lbl">النقاط المطلوبة:</span> ${esc(x.k)}</div>`;return}
+    const g=st.essayRes&&st.essayRes[i];
+    if(g===undefined&&st.essayRes===null){r.innerHTML='جاري التصحيح...';return}
+    if(!g){r.innerHTML=`<div>${esc(st.essayMsg||'التصحيح الآلي ما اشتغلش.')}</div><div class="key"><span class="lbl">النقاط المطلوبة:</span> ${esc(x.k)}</div>`;return}
+    tot+=g.score;cnt++;
+    card.classList.add(g.score>=6?'right':'wrong');
+    r.innerHTML=`<span class="badge ${g.score>=6?'b-ok':'b-bad'}">${g.score} من 10</span>`+
+      (g.good?`<div class="fb"><div><span class="lbl">✓ اللي كتبته صح:</span> ${esc(g.good)}</div></div>`:'')+
+      (g.missing?`<div class="fb"><div><span class="lbl">✗ ناقصك:</span> ${esc(g.missing)}</div></div>`:`<div class="fb"><div><span class="lbl">✓</span> مفيش نقاط ناقصة، إجابة كاملة.</div></div>`)+
+      (g.wrong?`<div class="fb"><div><span class="lbl">⚠ معلومة غلط:</span> ${esc(g.wrong)}</div></div>`:'');
+  });
+  if(es){
+    if(st.essayRes===null)es.textContent='جاري تصحيح المقالي...';
+    else if(cnt)es.innerHTML=`<div class="stat" style="display:inline-block">المقالي: ${tot} من ${cnt*10} (في ${cnt} سؤال اتجاوب)</div>`;
+    else es.textContent=st.essayMsg||'';
+  }
+}
+async function grade(){
+  const left=MCQ.length-Object.keys(st.picks).length;
+  if(left>0&&!confirm(`لسه في ${left} سؤال اختيار من غير إجابة. تصحح كده؟`))return;
+  st.graded=true;st.essayRes=null;save();
+  render();$('#summary').scrollIntoView({behavior:'smooth'});
+  const todo=ESSAY.map((x,i)=>({i,q:x.q,k:x.k,a:(st.essays[i]||'').trim()})).filter(x=>x.a);
+  if(!todo.length){st.essayRes={};st.essayMsg='مفيش أسئلة مقالي اتجاوبت.';save();showEssays();return}
+  if(!sample){st.essayRes={};st.essayMsg='التصحيح الآلي للمقالي مش متاح هنا، قارن إجابتك بالنقاط المطلوبة.';save();showEssays();return}
+  const prompt=`إنت مصحح امتحانات لطلاب كلية زراعة، قسم علوم وتكنولوجيا الأغذية، مادة "أسس حفظ الأغذية" (سكشن تجهيز وإعداد الخضار والفاكهة).
+صحّح إجابات الطالب المقالية على أساس المعنى والأفكار العلمية بس. الطالب مش مطلوب منه يكتب إجابة نموذجية ولا نفس الكلمات؛ أي صياغة بأسلوبه أو بالعامية تتحسب صح طالما المعنى صح.
+لكل سؤال عندك "النقاط المطلوبة". ادي درجة من 10 حسب نسبة النقاط اللي ذكرها، واخصم لو فيه معلومة غلط علميًا.
+اكتب بالعامية المصرية وكلّم الطالب بصيغة المذكر (إنت كتبت / ناقصك / ركّز). خلي الكلام مختصر ومباشر:
+- good: اللي كتبه صح باختصار.
+- missing: النقاط الناقصة بالظبط، كل نقطة باختصار ومفصولة بـ " • ". لو مفيش اكتب "".
+- wrong: أي معلومة غلط كتبها وتصحيحها باختصار، أو "".
+
+الأسئلة:
+${JSON.stringify(todo.map(x=>({id:x.i,question:x.q,required_points:x.k,student_answer:x.a})),null,1)}
+
+رجّع JSON بس من غير أي كلام تاني:
+{"results":[{"id":رقم,"score":رقم من 0 لـ 10,"good":"","missing":"","wrong":""}]}`;
+  try{
+    const d=await sample.json(prompt,{modelTier:'default'});
+    const res={};((d&&d.results)||[]).forEach(r=>{res[+r.id]={score:Math.max(0,Math.min(10,Math.round(+r.score||0))),good:String(r.good||''),missing:String(r.missing||''),wrong:String(r.wrong||'')}});
+    st.essayRes=res;st.essayMsg='التصحيح ما رجعش نتيجة للسؤال ده.';
+  }catch(e){
+    st.essayRes={};
+    st.essayMsg=e&&e.code==='not_granted'?'التصحيح الآلي اترفض، قارن إجابتك بالنقاط المطلوبة.':e&&e.code==='rate_limited'?'التصحيح الآلي مشغول دلوقتي، قارن إجابتك بالنقاط المطلوبة.':'التصحيح الآلي ما اشتغلش، قارن إجابتك بالنقاط المطلوبة.';
+  }
+  save();showEssays();
+}
+let wrongOnly=false;
+$('#onlyWrong').onclick=()=>{wrongOnly=!wrongOnly;document.querySelectorAll('.q').forEach(c=>c.classList.toggle('hide',wrongOnly&&c.classList.contains('right')));document.querySelectorAll('.sec').forEach(s=>s.classList.toggle('hide',wrongOnly));$('#onlyWrong').textContent=wrongOnly?'اعرض الكل':'اعرض الغلط بس'};
+$('#reset').onclick=()=>{if(confirm('هتبدأ امتحان جديد والإجابات الحالية هتتمسح. تكمل؟')){wrongOnly=false;$('#onlyWrong').textContent='اعرض الغلط بس';st=fresh();save();render();window.scrollTo(0,0)}};
+$('#grade').onclick=grade;
+st=load()||fresh();
+if(st.graded&&st.essayRes===null){st.essayRes={};st.essayMsg='التصحيح اتقطع قبل ما يخلص. اعمل امتحان جديد لو عايز تتصحح تاني.'}
+render();
+(async()=>{try{if(window.claude&&claude.use)sample=await claude.use('sample')}catch(e){sample=null}})();
+</script>
+</body>
+</html>
